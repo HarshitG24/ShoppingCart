@@ -9,16 +9,16 @@ function ProductList(props) {
   const [error, setError] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(5);
+  const [productsPerPage, setProductsPerPage] = useState(2);
 
   useEffect(() => {
-    // fetch("https://fakestoreapi.com/products")
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     setProductList(json);
-    //   })
-    //   .catch((error) => setError(error.message));
-    setProductList(products);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setProductList(json);
+      })
+      .catch((error) => setError(error.message));
+    // setProductList(products);
   }, []);
 
   // Get current products
@@ -66,7 +66,7 @@ function ProductList(props) {
         <div>
           <button
             onClick={() => {
-              if (currentPage !== 4) setCurrentPage(currentPage + 1);
+              if (currentPage !== 10) setCurrentPage(currentPage + 1);
             }}
           >
             Next

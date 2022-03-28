@@ -5,8 +5,8 @@ function Cart(props) {
   console.log("the items are ", items);
   return (
     <div>
-      <label>You have the following items in cart</label>
-      {items.length &&
+      <p>You have the following items in cart</p>
+      {items.length > 0 &&
         items.map((i, index) => {
           return (
             <CartItem
