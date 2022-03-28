@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Product from "./Product";
 
-function ProductList() {
+function ProductList(props) {
   const [productList, setProductList] = useState([]);
   const [error, setError] = useState("");
 
@@ -19,7 +19,16 @@ function ProductList() {
     <div>
       {productList.length > 0 &&
         productList.map((p, index) => {
-          return <Product product={p} key={index} />;
+          return (
+            <Product
+              product={p}
+              key={index}
+              setCartItems={props.setCartItems}
+              currentItems={props.currentItems}
+              checkoutPrice={props.checkoutPrice}
+              SetCheckoutPrice={props.SetCheckoutPrice}
+            />
+          );
         })}
     </div>
   );

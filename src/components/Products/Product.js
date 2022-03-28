@@ -1,7 +1,6 @@
 import "./css/Product.css";
 
 function Product(props) {
-  console.log("this is printed", props);
   const {
     category,
     description,
@@ -30,7 +29,19 @@ function Product(props) {
 
           <div className="product-price-cart">
             <p>Price: ${price}</p>
-            <button className="add-to-cart">Add To Cart</button>
+            <button
+              className="add-to-cart"
+              onClick={() => {
+                props.setCartItems([
+                  ...props.currentItems,
+                  { id, title, price },
+                ]);
+
+                props.SetCheckoutPrice(props.checkoutPrice + price);
+              }}
+            >
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
