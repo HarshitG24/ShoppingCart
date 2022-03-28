@@ -1,6 +1,6 @@
 .product-box {
   width: 95%;
-  height: 18rem;
+  height: 20%; /*18rem; */
   background-color: #fff;
   display: flex;
   flex-direction: row;
@@ -9,6 +9,7 @@
 .product {
   margin-left: 2rem;
   margin-bottom: 2rem;
+  overflow-y: auto;
 }
 
 .product-image {
