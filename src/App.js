@@ -22,7 +22,12 @@ function App() {
 
         <div className="page-right">
           <h1>My Cart</h1>
-          <Cart items={cartItems} checkoutPrice={checkoutPrice} />
+          <Cart
+            items={cartItems}
+            checkoutPrice={checkoutPrice}
+            SetCheckoutPrice={SetCheckoutPrice}
+            setCartItems={setCartItems}
+          />
         </div>
       </div>
     </div>

@@ -37,7 +37,8 @@ function Product(props) {
                   { id, title, price },
                 ]);
 
-                props.SetCheckoutPrice(props.checkoutPrice + price);
+                let newPrice = props.checkoutPrice + price;
+                props.SetCheckoutPrice(newPrice);
               }}
             >
               Add To Cart
