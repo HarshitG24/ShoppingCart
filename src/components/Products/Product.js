@@ -32,9 +32,16 @@ function Product(props) {
             <button
               className="add-to-cart"
               onClick={() => {
+                let identifier = 1;
+                if (props.currentItems.length > 0) {
+                  let lastItem =
+                    props.currentItems[props.currentItems.length - 1];
+
+                  identifier = lastItem.id + 1;
+                }
                 props.setCartItems([
                   ...props.currentItems,
-                  { id, title, price },
+                  { id: identifier, title, price },
                 ]);
 
                 let newPrice = props.checkoutPrice + price;
