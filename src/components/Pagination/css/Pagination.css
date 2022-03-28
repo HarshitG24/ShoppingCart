@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.page-item {
+  margin-right: 2rem;
+}
+
+.page-link {
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid #000000;
+  text-decoration: none;
+  padding: 0.3rem;
+}
+
+.page-link-active {
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid #000000;
+  text-decoration: none;
+  padding: 0.3rem;
+  background-color: tomato;
+  color: white;
+}
