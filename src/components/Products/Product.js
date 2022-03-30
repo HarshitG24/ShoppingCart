@@ -1,4 +1,5 @@
 import "./css/Product.css";
+var minimongo = require("minimongo");
 
 function Product(props) {
   const {
@@ -10,6 +11,23 @@ function Product(props) {
     rating,
     title,
   } = props.product;
+
+  function addProductToCart(productObj, doneCBK) {
+    console.log("creating publication", productObj);
+    let db = new minimongo.IndexedDb(
+      {
+        namespace: "shoppingCart",
+      },
+      function () {
+        db.addCollection("products", function () {
+          db.products.upsert(productObj, function (res) {
+            doneCBK(res);
+          });
+        });
+      }
+    );
+  }
+
   return (
     <div className="product">
       <div className="product-box">
