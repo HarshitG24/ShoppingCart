@@ -50,7 +50,7 @@ function Product(props) {
             <p>Price: ${price}</p>
             <button
               className="add-to-cart"
-              onClick={() => {
+              onClick={async () => {
                 let identifier = 1;
                 if (props.currentItems.length > 0) {
                   let lastItem =
@@ -65,7 +65,7 @@ function Product(props) {
 
                 let newPrice = props.checkoutPrice + price;
                 props.SetCheckoutPrice(newPrice);
-                addProducts(
+                await addProducts(
                   // [
                   // ...props.currentItems,
                   { id: identifier, title, price }

@@ -1,6 +1,7 @@
 import "../ShoppingCart/css/CartItem.css";
 import garbage from "../../images/garbage.png";
-import { removeProducts } from "../../Modal/Minimongo";
+import { removeProducts, getProducts } from "../../Modal/Minimongo";
+import { useEffect } from "react";
 
 function CartItem(props) {
   const {
@@ -10,6 +11,21 @@ function CartItem(props) {
     checkoutPrice,
     SetCheckoutPrice,
   } = props;
+
+  // useEffect(() => {
+  //   getProducts((shoppedProducts) => {
+  //     console.log("shopped products are", shoppedProducts);
+  //     setCartItems(shoppedProducts);
+  //   });
+  // }, [cartItems]);
+
+  function updateProductsInDb() {
+    getProducts((shoppedProducts) => {
+      console.log("shopped products are", shoppedProducts);
+      setCartItems(shoppedProducts);
+    });
+  }
+
   return (
     <div>
       <div className="cart-item">
@@ -24,17 +40,19 @@ function CartItem(props) {
         <div className="delete-space">
           <button
             className="delete-btn"
-            onClick={() => {
-              let items = cartItems.filter((e) => e.id !== item.id);
-              setCartItems(items);
+            onClick={async () => {
+              // let items = cartItems.filter((e) => e.id !== item.id);
+              // setCartItems(items);
 
               let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
               SetCheckoutPrice(newPrice);
-              removeProducts({
+              await removeProducts({
                 id: item.id,
                 title: item.title,
                 price: item.price,
               });
+
+              await updateProductsInDb();
             }}
           >
             <img src={garbage} alt="" className="delete" />

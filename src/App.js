@@ -1,11 +1,26 @@
 import "./App.css";
 import ProductList from "./components/Products/ProductList";
 import Cart from "./components/ShoppingCart/Cart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getProducts } from "./Modal/Minimongo";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [checkoutPrice, SetCheckoutPrice] = useState(0);
+
+  useEffect(() => {
+    getProducts((shoppedProducts) => {
+      console.log("shopped products are", shoppedProducts);
+      setCartItems(shoppedProducts);
+
+      let price = 0;
+      (shoppedProducts || []).map((e) => {
+        price += e.price;
+      });
+
+      SetCheckoutPrice(price);
+    });
+  }, []);
 
   return (
     <div className="App">
