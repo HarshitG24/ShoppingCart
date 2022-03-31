@@ -1,4 +1,5 @@
 import "./css/Product.css";
+import { addProducts } from "../../Modal/Minimongo";
 var minimongo = require("minimongo");
 
 function Product(props) {
@@ -64,6 +65,12 @@ function Product(props) {
 
                 let newPrice = props.checkoutPrice + price;
                 props.SetCheckoutPrice(newPrice);
+                addProducts(
+                  // [
+                  // ...props.currentItems,
+                  { id: identifier, title, price }
+                  // ]
+                );
               }}
             >
               Add To Cart
