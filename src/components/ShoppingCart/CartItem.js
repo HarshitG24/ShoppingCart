@@ -1,5 +1,6 @@
 import "../ShoppingCart/css/CartItem.css";
 import garbage from "../../images/garbage.png";
+import { removeProducts } from "../../Modal/Minimongo";
 
 function CartItem(props) {
   const {
@@ -29,6 +30,11 @@ function CartItem(props) {
 
               let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
               SetCheckoutPrice(newPrice);
+              removeProducts({
+                id: item.id,
+                title: item.title,
+                price: item.price,
+              });
             }}
           >
             <img src={garbage} alt="" className="delete" />
