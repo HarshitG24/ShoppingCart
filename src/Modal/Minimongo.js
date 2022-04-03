@@ -1,16 +1,20 @@
 import minimongo from "minimongo";
 
-const addProducts = (productObj) => {
+const addProducts = (
+  dbName = "shoppingProducts",
+  collection = "products",
+  productObj
+) => {
   return new Promise((resolve, reject) => {
     let db = new minimongo.IndexedDb(
       {
-        namespace: "shoppingProducts",
+        namespace: dbName,
       },
       function () {
         db.addCollection(
-          "products",
+          collection,
           function () {
-            db.products.upsert(productObj, resolve, reject);
+            db[collection].upsert(productObj, resolve, reject);
           },
           reject
         );
@@ -20,14 +24,18 @@ const addProducts = (productObj) => {
   });
 };
 
-const getProducts = (doneCBK) => {
+const getProducts = (
+  dbName = "shoppingProducts",
+  collection = "products",
+  doneCBK
+) => {
   let db = new minimongo.IndexedDb(
     {
-      namespace: "shoppingProducts",
+      namespace: dbName,
     },
     function () {
-      db.addCollection("products", function () {
-        db.products.find({}).fetch(function (products, err) {
+      db.addCollection(collection, function () {
+        db[collection].find({}).fetch(function (products, err) {
           doneCBK(products);
         });
       });
@@ -35,17 +43,21 @@ const getProducts = (doneCBK) => {
   );
 };
 
-const removeProducts = (productObj) => {
+const removeProducts = (
+  dbName = "shoppingProducts",
+  collection = "products",
+  productObj
+) => {
   return new Promise((resolve, reject) => {
     let db = new minimongo.IndexedDb(
       {
-        namespace: "shoppingProducts",
+        namespace: dbName,
       },
       function () {
         db.addCollection(
-          "products",
+          collection,
           function () {
-            db.products.remove(productObj, resolve, reject);
+            db[collection].remove(productObj, resolve, reject);
           },
           reject
         );

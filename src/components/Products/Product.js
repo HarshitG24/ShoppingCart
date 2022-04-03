@@ -43,13 +43,21 @@ function Product(props) {
 
                   identifier = lastItem.id + 1;
                 }
-                await addProducts({ id: identifier, title, price });
-
-                getProducts((updatedProducts) => {
-                  props.setCartItems(updatedProducts);
-                  let price = calculateUpdatedPrice(updatedProducts);
-                  props.SetCheckoutPrice(price);
+                await addProducts("shoppingProducts", "products", {
+                  id: identifier,
+                  title,
+                  price,
                 });
+
+                getProducts(
+                  "shoppingProducts",
+                  "products",
+                  (updatedProducts) => {
+                    props.setCartItems(updatedProducts);
+                    let price = calculateUpdatedPrice(updatedProducts);
+                    props.SetCheckoutPrice(price);
+                  }
+                );
               }}
             >
               Add To Cart

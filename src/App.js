@@ -10,7 +10,7 @@ function App() {
   const [checkoutPrice, SetCheckoutPrice] = useState(0);
 
   useEffect(() => {
-    getProducts((shoppedProducts) => {
+    getProducts("shoppingProducts", "products", (shoppedProducts) => {
       setCartItems(shoppedProducts);
       let price = calculateUpdatedPrice(shoppedProducts);
       SetCheckoutPrice(price);

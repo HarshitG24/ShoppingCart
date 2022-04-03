@@ -21,7 +21,7 @@ function CartItem(props) {
   // }, [cartItems]);
 
   function updateProductsInDb() {
-    getProducts((shoppedProducts) => {
+    getProducts("shoppingProducts", "products", (shoppedProducts) => {
       console.log("products after delete are", shoppedProducts);
       setCartItems(shoppedProducts);
 
@@ -55,7 +55,7 @@ function CartItem(props) {
 
               // let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
               // SetCheckoutPrice(newPrice);
-              await removeProducts({
+              await removeProducts("shoppingProducts", "products", {
                 id: item.id,
                 title: item.title,
                 price: item.price,
