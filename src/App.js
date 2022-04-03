@@ -3,21 +3,16 @@ import ProductList from "./components/Products/ProductList";
 import Cart from "./components/ShoppingCart/Cart";
 import { useState, useEffect } from "react";
 import { getProducts } from "./Modal/Minimongo";
+import { calculateUpdatedPrice } from "./Modal/Price";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [checkoutPrice, SetCheckoutPrice] = useState(0);
 
-  useEffect(async () => {
+  useEffect(() => {
     getProducts((shoppedProducts) => {
-      console.log("shopped products are", shoppedProducts);
       setCartItems(shoppedProducts);
-
-      let price = 0;
-      (shoppedProducts || []).map((e) => {
-        price += e.price;
-      });
-
+      let price = calculateUpdatedPrice(shoppedProducts);
       SetCheckoutPrice(price);
     });
   }, []);

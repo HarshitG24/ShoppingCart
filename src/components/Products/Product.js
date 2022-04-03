@@ -1,6 +1,7 @@
 import "./css/Product.css";
-import { addProducts } from "../../Modal/Minimongo";
-var minimongo = require("minimongo");
+import { addProducts, getProducts } from "../../Modal/Minimongo";
+import { calculateUpdatedPrice } from "../../Modal/Price";
+import minimongo from "minimongo";
 
 function Product(props) {
   const {
@@ -12,22 +13,6 @@ function Product(props) {
     rating,
     title,
   } = props.product;
-
-  function addProductToCart(productObj, doneCBK) {
-    console.log("creating publication", productObj);
-    let db = new minimongo.IndexedDb(
-      {
-        namespace: "shoppingCart",
-      },
-      function () {
-        db.addCollection("products", function () {
-          db.products.upsert(productObj, function (res) {
-            doneCBK(res);
-          });
-        });
-      }
-    );
-  }
 
   return (
     <div className="product">
@@ -58,19 +43,13 @@ function Product(props) {
 
                   identifier = lastItem.id + 1;
                 }
-                props.setCartItems([
-                  ...props.currentItems,
-                  { id: identifier, title, price },
-                ]);
+                await addProducts({ id: identifier, title, price });
 
-                let newPrice = props.checkoutPrice + price;
-                props.SetCheckoutPrice(newPrice);
-                await addProducts(
-                  // [
-                  // ...props.currentItems,
-                  { id: identifier, title, price }
-                  // ]
-                );
+                getProducts((updatedProducts) => {
+                  props.setCartItems(updatedProducts);
+                  let price = calculateUpdatedPrice(updatedProducts);
+                  props.SetCheckoutPrice(price);
+                });
               }}
             >
               Add To Cart

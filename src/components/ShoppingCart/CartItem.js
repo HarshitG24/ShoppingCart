@@ -2,6 +2,7 @@ import "../ShoppingCart/css/CartItem.css";
 import garbage from "../../images/garbage.png";
 import { removeProducts, getProducts } from "../../Modal/Minimongo";
 import { useEffect } from "react";
+import { calculateUpdatedPrice } from "../../Modal/Price";
 
 function CartItem(props) {
   const {
@@ -24,11 +25,11 @@ function CartItem(props) {
       console.log("products after delete are", shoppedProducts);
       setCartItems(shoppedProducts);
 
-      let price = 0;
+      let price = calculateUpdatedPrice(shoppedProducts);
 
-      shoppedProducts.forEach((e) => {
-        price += parseFloat(e.price).toFixed(2);
-      });
+      // shoppedProducts.forEach((e) => {
+      //   price += e.price;
+      // });
 
       SetCheckoutPrice(price);
     });

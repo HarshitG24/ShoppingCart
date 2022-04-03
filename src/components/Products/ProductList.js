@@ -12,12 +12,7 @@ function ProductList(props) {
   const [productsPerPage, setProductsPerPage] = useState(2);
 
   useEffect(() => {
-    // fetch("https://fakestoreapi.com/products")
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     setProductList(json);
-    //   })
-    //   .catch((error) => setError(error.message));
+    // only to initialize data when launching app for first time.
     setProductList(products);
   }, []);
 
