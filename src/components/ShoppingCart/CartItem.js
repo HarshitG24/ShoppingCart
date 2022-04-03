@@ -21,8 +21,16 @@ function CartItem(props) {
 
   function updateProductsInDb() {
     getProducts((shoppedProducts) => {
-      console.log("shopped products are", shoppedProducts);
+      console.log("products after delete are", shoppedProducts);
       setCartItems(shoppedProducts);
+
+      let price = 0;
+
+      shoppedProducts.forEach((e) => {
+        price += parseFloat(e.price).toFixed(2);
+      });
+
+      SetCheckoutPrice(price);
     });
   }
 
@@ -44,15 +52,15 @@ function CartItem(props) {
               // let items = cartItems.filter((e) => e.id !== item.id);
               // setCartItems(items);
 
-              let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
-              SetCheckoutPrice(newPrice);
+              // let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
+              // SetCheckoutPrice(newPrice);
               await removeProducts({
                 id: item.id,
                 title: item.title,
                 price: item.price,
               });
 
-              await updateProductsInDb();
+              updateProductsInDb();
             }}
           >
             <img src={garbage} alt="" className="delete" />

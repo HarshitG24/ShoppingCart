@@ -8,7 +8,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [checkoutPrice, SetCheckoutPrice] = useState(0);
 
-  useEffect(() => {
+  useEffect(async () => {
     getProducts((shoppedProducts) => {
       console.log("shopped products are", shoppedProducts);
       setCartItems(shoppedProducts);
