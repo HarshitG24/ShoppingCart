@@ -1,5 +1,6 @@
 import CartItem from "./CartItem";
 import "./css/CartItem.css";
+import PropTypes from "prop-types";
 
 function Cart(props) {
   const { items, checkoutPrice, SetCheckoutPrice, setCartItems } = props;
@@ -19,10 +20,8 @@ function Cart(props) {
             <CartItem
               item={i}
               key={index}
-              checkoutPrice={checkoutPrice}
               SetCheckoutPrice={SetCheckoutPrice}
               setCartItems={setCartItems}
-              cartItems={items}
             />
           );
         })}
@@ -35,5 +34,12 @@ function Cart(props) {
     </div>
   );
 }
+
+Cart.propTypes = {
+  items: PropTypes.array.isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  checkoutPrice: PropTypes.number.isRequired,
+  SetCheckoutPrice: PropTypes.func.isRequired,
+};
 
 export default Cart;

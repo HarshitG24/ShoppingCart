@@ -1,36 +1,22 @@
 import "../ShoppingCart/css/CartItem.css";
 import garbage from "../../images/garbage.png";
 import { removeProducts, getProducts } from "../../Model/Minimongo";
-import { useEffect } from "react";
 import { calculateUpdatedPrice } from "../../Model/Price";
+import PropTypes from "prop-types";
 
 function CartItem(props) {
   const {
     item,
-    cartItems,
+    // cartItems,
     setCartItems,
-    checkoutPrice,
+    // checkoutPrice,
     SetCheckoutPrice,
   } = props;
 
-  // useEffect(() => {
-  //   getProducts((shoppedProducts) => {
-  //     console.log("shopped products are", shoppedProducts);
-  //     setCartItems(shoppedProducts);
-  //   });
-  // }, [cartItems]);
-
   function updateProductsInDb() {
     getProducts("shoppingProducts", "products", (shoppedProducts) => {
-      console.log("products after delete are", shoppedProducts);
       setCartItems(shoppedProducts);
-
       let price = calculateUpdatedPrice(shoppedProducts);
-
-      // shoppedProducts.forEach((e) => {
-      //   price += e.price;
-      // });
-
       SetCheckoutPrice(price);
     });
   }
@@ -50,11 +36,6 @@ function CartItem(props) {
           <button
             className="delete-btn"
             onClick={async () => {
-              // let items = cartItems.filter((e) => e.id !== item.id);
-              // setCartItems(items);
-
-              // let newPrice = parseFloat(checkoutPrice - item.price).toFixed(2);
-              // SetCheckoutPrice(newPrice);
               await removeProducts("shoppingProducts", "products", {
                 id: item.id,
                 title: item.title,
@@ -71,5 +52,11 @@ function CartItem(props) {
     </div>
   );
 }
+
+CartItem.propTypes = {
+  item: PropTypes.array.isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  SetCheckoutPrice: PropTypes.func.isRequired,
+};
 
 export default CartItem;

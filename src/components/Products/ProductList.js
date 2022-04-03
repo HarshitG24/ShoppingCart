@@ -4,6 +4,7 @@ import Pagination from "../Pagination/Pagination";
 import { products } from "../../Data/Data.js";
 import "../Products/css/ProductList.css";
 import { addProducts, getProducts } from "../../Model/Minimongo";
+import PropTypes from "prop-types";
 
 function ProductList(props) {
   const [productList, setProductList] = useState([]);
@@ -80,5 +81,12 @@ function ProductList(props) {
     </div>
   );
 }
+
+ProductList.propTypes = {
+  setCartItems: PropTypes.func.isRequired,
+  currentItems: PropTypes.array.isRequired,
+  checkoutPrice: PropTypes.number.isRequired,
+  SetCheckoutPrice: PropTypes.func.isRequired,
+};
 
 export default ProductList;

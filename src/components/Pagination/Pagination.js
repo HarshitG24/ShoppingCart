@@ -1,4 +1,5 @@
 import "../Pagination/css/Pagination.css";
+import PropTypes from "prop-types";
 
 function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
   const pageNumbers = [];
@@ -25,5 +26,12 @@ function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
     </nav>
   );
 }
+
+Pagination.propTypes = {
+  productsPerPage: PropTypes.number.isRequired,
+  totalProducts: PropTypes.number.isRequired,
+  paginate: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};
 
 export default Pagination;

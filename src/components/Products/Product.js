@@ -1,6 +1,7 @@
 import "./css/Product.css";
 import { addProducts, getProducts } from "../../Model/Minimongo";
 import { calculateUpdatedPrice } from "../../Model/Price";
+import PropTypes from "prop-types";
 
 function Product(props) {
   const {
@@ -78,5 +79,9 @@ function Product(props) {
     </div>
   );
 }
+
+Product.propTypes = {
+  product: PropTypes.object.isRequired,
+};
 
 export default Product;
