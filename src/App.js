@@ -19,6 +19,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="navbar">
+        <label className="website-title">Shopper's Delight</label>
+      </div>
       <div className="page-divide">
         <div className="page-left">
           <h1>Shop</h1>
@@ -31,7 +34,7 @@ function App() {
         </div>
 
         <div className="page-right">
-          <h1>My Cart</h1>
+          <h1 className="cart-title">My Cart</h1>
           <Cart
             items={cartItems}
             checkoutPrice={checkoutPrice}

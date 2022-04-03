@@ -13,12 +13,12 @@ function ProductList(props) {
   const [productsPerPage, setProductsPerPage] = useState(2);
 
   useEffect(() => {
-    // only to initialize data when launching app for first time.
-    setProductList(products);
-
     getProducts("shoppingProducts", "productsList", async (list) => {
       if (list.length === 0) {
         await addProducts("shoppingProducts", "productsList", products);
+        setProductList(products);
+      } else {
+        setProductList(list);
       }
     });
   }, []);

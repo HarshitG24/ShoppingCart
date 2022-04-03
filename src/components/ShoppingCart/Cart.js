@@ -6,7 +6,7 @@ function Cart(props) {
   console.log("the items are ", items);
   return (
     <div className="cart-content">
-      <p>You have the following items in cart</p>
+      <p className="cart-description">You have the following items in cart</p>
       {items.length > 0 &&
         items.map((i, index) => {
           return (
@@ -20,7 +20,9 @@ function Cart(props) {
             />
           );
         })}
-      <p>Checkout: ${checkoutPrice}</p>
+      <div className="checkout">
+        <p className="checkout-text">Checkout: ${checkoutPrice}</p>
+      </div>
     </div>
   );
 }
