@@ -3,6 +3,7 @@ import Product from "./Product";
 import Pagination from "../Pagination/Pagination";
 import { products } from "../../Data/Data.js";
 import "../Products/css/ProductList.css";
+import { addProducts, getProducts } from "../../Modal/Minimongo";
 
 function ProductList(props) {
   const [productList, setProductList] = useState([]);
@@ -14,6 +15,12 @@ function ProductList(props) {
   useEffect(() => {
     // only to initialize data when launching app for first time.
     setProductList(products);
+
+    getProducts("shoppingProducts", "productsList", async (list) => {
+      if (list.length === 0) {
+        await addProducts("shoppingProducts", "productsList", products);
+      }
+    });
   }, []);
 
   // Get current products

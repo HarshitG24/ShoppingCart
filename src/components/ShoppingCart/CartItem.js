@@ -36,7 +36,7 @@ function CartItem(props) {
   }
 
   return (
-    <div>
+    <div className="cart-content">
       <div className="cart-item">
         <div className="cart-name">
           <p className="cart-name-label">{item.title}</p>
