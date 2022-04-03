@@ -45,5 +45,11 @@
 }
 
 .cart-title {
+  margin-top: 2rem;
   margin-left: 1rem;
+}
+
+.page-left-title {
+  margin-top: 2rem;
+  margin-left: 2rem;
 }

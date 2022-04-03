@@ -52,6 +52,7 @@ function ProductList(props) {
       <div className="pagination-row">
         <div>
           <button
+            className="pagination-btn"
             onClick={() => {
               if (currentPage !== 1) setCurrentPage(currentPage - 1);
             }}
@@ -67,6 +68,7 @@ function ProductList(props) {
         />
         <div>
           <button
+            className="pagination-btn"
             onClick={() => {
               if (currentPage !== 10) setCurrentPage(currentPage + 1);
             }}

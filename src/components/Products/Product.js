@@ -28,11 +28,22 @@ function Product(props) {
         <div className="product-details">
           <label className="product-label">{title}</label>
           <p className="product-description">{description}</p>
-          <label>Rating: {rating.rate}</label>
-          <p>Category: {category}</p>
+
+          <div>
+            <label className="category-title">Rating: </label>
+            <label>{rating.rate}</label>
+          </div>
+
+          <div>
+            <label className="category-title">Category: </label>
+            <label>{category}</label>
+          </div>
 
           <div className="product-price-cart">
-            <p>Price: ${price}</p>
+            <div>
+              <label className="category-title">Price: </label>
+              <label>${price}</label>
+            </div>
             <button
               className="add-to-cart"
               onClick={async () => {

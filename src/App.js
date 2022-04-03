@@ -24,7 +24,9 @@ function App() {
       </div>
       <div className="page-divide">
         <div className="page-left">
-          <h1>Shop</h1>
+          <h2 className="page-left-title">
+            Select a wide range of products to choose from
+          </h2>
           <ProductList
             setCartItems={setCartItems}
             currentItems={cartItems}

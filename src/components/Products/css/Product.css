@@ -40,7 +40,7 @@
 
 .product-description {
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .product-price-cart {
@@ -53,6 +53,16 @@
 
 .add-to-cart {
   width: 6rem;
-  height: 1.5rem;
+  height: 2rem;
   margin-right: 1rem;
+  background-color: rgb(254, 94, 93);
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.category-title {
+  font-weight: 800;
 }
