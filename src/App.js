@@ -2,8 +2,8 @@ import "./App.css";
 import ProductList from "./components/Products/ProductList";
 import Cart from "./components/ShoppingCart/Cart";
 import { useState, useEffect } from "react";
-import { getProducts } from "./Modal/Minimongo";
-import { calculateUpdatedPrice } from "./Modal/Price";
+import { getProducts } from "./Model/Minimongo";
+import { calculateUpdatedPrice } from "./Model/Price";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);

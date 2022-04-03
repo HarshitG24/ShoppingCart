@@ -3,7 +3,7 @@ import Product from "./Product";
 import Pagination from "../Pagination/Pagination";
 import { products } from "../../Data/Data.js";
 import "../Products/css/ProductList.css";
-import { addProducts, getProducts } from "../../Modal/Minimongo";
+import { addProducts, getProducts } from "../../Model/Minimongo";
 
 function ProductList(props) {
   const [productList, setProductList] = useState([]);

@@ -1,8 +1,8 @@
 import "../ShoppingCart/css/CartItem.css";
 import garbage from "../../images/garbage.png";
-import { removeProducts, getProducts } from "../../Modal/Minimongo";
+import { removeProducts, getProducts } from "../../Model/Minimongo";
 import { useEffect } from "react";
-import { calculateUpdatedPrice } from "../../Modal/Price";
+import { calculateUpdatedPrice } from "../../Model/Price";
 
 function CartItem(props) {
   const {

@@ -1,7 +1,6 @@
 import "./css/Product.css";
-import { addProducts, getProducts } from "../../Modal/Minimongo";
-import { calculateUpdatedPrice } from "../../Modal/Price";
-import minimongo from "minimongo";
+import { addProducts, getProducts } from "../../Model/Minimongo";
+import { calculateUpdatedPrice } from "../../Model/Price";
 
 function Product(props) {
   const {
