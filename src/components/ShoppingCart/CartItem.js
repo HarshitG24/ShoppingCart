@@ -54,7 +54,7 @@ function CartItem(props) {
 }
 
 CartItem.propTypes = {
-  item: PropTypes.array.isRequired,
+  item: PropTypes.object.isRequired,
   setCartItems: PropTypes.func.isRequired,
   SetCheckoutPrice: PropTypes.func.isRequired,
 };

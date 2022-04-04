@@ -71,7 +71,8 @@ function ProductList(props) {
           <button
             className="pagination-btn"
             onClick={() => {
-              if (currentPage !== 10) setCurrentPage(currentPage + 1);
+              if (currentPage < Math.ceil(productList.length / productsPerPage))
+                setCurrentPage(currentPage + 1);
             }}
           >
             Next

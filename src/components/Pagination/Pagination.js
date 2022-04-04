@@ -30,7 +30,7 @@ function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
 Pagination.propTypes = {
   productsPerPage: PropTypes.number.isRequired,
   totalProducts: PropTypes.number.isRequired,
-  paginate: PropTypes.number.isRequired,
+  paginate: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
 
